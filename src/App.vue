@@ -3,7 +3,7 @@
     <div class="background">
       <h1 class="text-center pa-4"> TITULO DE LA PAGINA</h1>
     <div class="d-block justify-center mb-6 mt-8 pa-8">
-      <Formulario></Formulario>
+      <Formulario :arrayProp="desserts" ></Formulario>
       <Tabla :arrayProp="desserts" ></Tabla>
     </div>
     </div>
