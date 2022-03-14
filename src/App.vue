@@ -1,9 +1,11 @@
 <template>
   <v-app>
     <div class="background">
-      <h1 class="text-center pa-4"> TITULO DE LA PAGINA</h1>
+      <h1 class="text-center pa-4"> DESAFIO 4 - FORMULARIO </h1>
+      <p class="text-center pa-4"> Ingrese su Postre Favorito Por Favor! </p>
+
     <div class="d-block justify-center mb-6 mt-8 pa-8">
-      <Formulario></Formulario>
+      <Formulario @nuevo="nuevo" ></Formulario>
       <Tabla :arrayProp="desserts" ></Tabla>
     </div>
     </div>
@@ -16,7 +18,6 @@ import Tabla from "@/components/Tabla";
 
 export default {
   name: 'App',
-
   components: {
     Formulario,
     Tabla
@@ -86,6 +87,11 @@ export default {
           category: 'A'
         },
       ],
+    }
+  },
+  methods: {
+    nuevo(param) {
+      this.desserts.push(param)
     }
   }
 };
