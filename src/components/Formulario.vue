@@ -47,12 +47,12 @@
 
     <v-btn
         class="mr-4"
-        @click="submit"
+        @click="guardarDatos"
     >
-      submit
+      Submit
     </v-btn>
     <v-btn @click="clear">
-      clear
+      Clear
     </v-btn>
   </form>
 </template>
@@ -79,23 +79,23 @@ export default {
   },
 
   data: () => ({
-
+    name: '',
+    calories: '',
+    select: null,
+    items: [
+      'A',
+      'B',
+      'C',
+      'D',
+    ],
+    arrayPersona: [],
+    price: '',
+    checkbox: false,
     props: {
       arrayProp: {
         type: Array,
         default: () => []
       },
-      name: '',
-      calories: '',
-      select: null,
-      items: [
-        'A',
-        'B',
-        'C',
-        'D',
-      ],
-      price: '',
-      checkbox: false,
     }
   }),
 
@@ -133,12 +133,19 @@ export default {
       !this.$v.price.required && errors.push('Price is required')
       return errors
     },
-
   },
 
   methods: {
-    submit() {
+    guardarDatos() {
+      const nuevo = {
+        name: this.name,
+        calories: this.calories,
+        price: this.price,
+        category: this.select,
+      }
 
+      this.$emit("nuevo", nuevo)
+      this.clear();
     },
 
     clear() {
@@ -153,5 +160,5 @@ export default {
 }
 </script>
 
-<!--LLEVAR DATA DE LA TABLA A FORMULARIO -- DESPUES PASARLA COMO PROPS -- DESPUES CAPTAR LA DATA ESCRITA POR EL USUARIO
-Y PUSHEAR LA INFO AL ARRAY -->
+<!-- CAPTAR LA DATA ESCRITA POR EL USUARIO, Y PUSHEAR LA INFO AL ARRAY -->
+

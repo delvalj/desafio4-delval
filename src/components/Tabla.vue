@@ -29,6 +29,7 @@
         <td>{{ postre.category }}</td>
       </tr>
       </tbody>
+
     </template>
   </v-simple-table>
 </template>
