@@ -1,4 +1,5 @@
 <template>
+  <v-container>
   <form>
     <v-text-field
         v-model="name"
@@ -54,7 +55,8 @@
     <v-btn @click="clear">
       Clear
     </v-btn>
-  </form>
+  </form >
+  </v-container>
 </template>
 <script>
 import {validationMixin} from 'vuelidate'

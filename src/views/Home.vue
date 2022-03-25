@@ -1,15 +1,17 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-  </div>
+  <v-app class="home">
+    <Formulario></Formulario>
+  </v-app>
 </template>
 
 <script>
-// @ is an alias to /src
+import Formulario from "@/components/Formulario";
+// import Tabla from "@/components/Tabla";
 
 export default {
   name: 'Home',
   components: {
+    Formulario,
   }
 }
 </script>
