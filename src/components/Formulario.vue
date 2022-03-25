@@ -6,7 +6,7 @@
     <v-text-field
         v-model="name"
         :error-messages="nameErrors"
-        :counter="10"
+        :counter="20"
         label="Nombre"
         required
         @input="$v.name.$touch()"
@@ -39,18 +39,9 @@
         @change="$v.select.$touch()"
         @blur="$v.select.$touch()"
     ></v-select>
-<!--    <v-checkbox-->
-<!--        v-model="checkbox"-->
-<!--        :error-messages="checkboxErrors"-->
-<!--        label="Do you agree?"-->
-<!--        required-->
-<!--        @change="$v.checkbox.$touch()"-->
-<!--        @blur="$v.checkbox.$touch()"-->
-<!--    ></v-checkbox>-->
-
     <v-btn
         class="mr-4"
-        @click="guardarDatos"
+        @click="submitDatos"
     >
       Submit
     </v-btn>
@@ -63,6 +54,7 @@
 <script>
 import {validationMixin} from 'vuelidate'
 import {required, maxLength, numeric} from 'vuelidate/lib/validators'
+const axios = require('axios');
 
 // const mustBeNumber = (value) => value.type(Number)
 
@@ -71,7 +63,7 @@ export default {
 
   validations: {
 
-    name: {required, maxLength: maxLength(10)},
+    name: {required, maxLength: maxLength(20)},
     calories: {required, numeric},
     select: {required},
     price: {required, numeric},
@@ -87,29 +79,15 @@ export default {
     calories: '',
     select: null,
     items: [
-      'A',
-      'B',
-      'C',
-      'D',
+      'Entrada',
+      'Plato Principal',
+      'Bebida',
+      'Postre',
     ],
-    arrayPersona: [],
     price: '',
-    checkbox: false,
-    props: {
-      arrayProp: {
-        type: Array,
-        default: () => []
-      },
-    }
-  }),
 
+  }),
   computed: {
-    checkboxErrors() {
-      const errors = []
-      if (!this.$v.checkbox.$dirty) return errors
-      !this.$v.checkbox.checked && errors.push('You must agree to continue!')
-      return errors
-    },
     selectErrors() {
       const errors = []
       if (!this.$v.select.$dirty) return errors
@@ -119,7 +97,7 @@ export default {
     nameErrors() {
       const errors = []
       if (!this.$v.name.$dirty) return errors
-      !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long')
+      !this.$v.name.maxLength && errors.push('Name must be at most 20 characters long')
       !this.$v.name.required && errors.push('Name is required.')
       return errors
     },
@@ -140,17 +118,24 @@ export default {
   },
 
   methods: {
-    guardarDatos() {
-      const nuevo = {
+      submitDatos() {
+      axios.post('https://6238c7400a54d2ceab7a0c3e.mockapi.io/desafio4productos', {
         name: this.name,
         calories: this.calories,
         price: this.price,
         category: this.select,
-      }
+      })
 
-      this.$emit("nuevo", nuevo)
-      this.clear();
-    },
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        this.clear();
+
+      },
 
     clear() {
       this.$v.$reset()

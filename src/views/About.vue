@@ -1,6 +1,6 @@
 <template>
   <v-app class="about">
-    <Formulario></Formulario>
+    <Formulario :nuevo="nuevo"></Formulario>
     <Tabla :arrayProductos="productos"></Tabla>
   </v-app>
 </template>
@@ -21,8 +21,6 @@ export default {
   created() {
     axios.get("https://6238c7400a54d2ceab7a0c3e.mockapi.io/desafio4productos").then((result) => {
       this.productos = (result.data)
-      // console.log("result.data " + JSON.stringify(result.data))
-      // console.dir("result.dir " + JSON.stringify(result.data))
       console.log("productos array " + JSON.stringify(this.productos))
     })
   },
@@ -30,6 +28,10 @@ export default {
     Tabla,
     Formulario
   },
-  methods: {}
+  methods: {
+    nuevo(param) {
+      this.productos.push(param)
+    }
+  }
 }
 </script>

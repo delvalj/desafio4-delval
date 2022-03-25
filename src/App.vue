@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/" @nuevo="nuevo">Home</router-link>
+      <router-link to="/">Home</router-link>
       |
       <router-link to="/about">About</router-link>
     </div>
@@ -14,78 +14,9 @@
 export default {
   name: 'App',
   components: {},
-
   data() {
-    return {
-      desserts: [
-        {
-          name: 'Frozen Yogurt',
-          calories: 159,
-          price: 10,
-          category: 'A'
-        },
-        {
-          name: 'Ice cream sandwich',
-          calories: 237,
-          price: 15,
-          category: 'B'
-        },
-        {
-          name: 'Eclair',
-          calories: 262,
-          price: 25,
-          category: 'C'
-        },
-        {
-          name: 'Cupcake',
-          calories: 305,
-          price: 5.25,
-          category: 'D'
-        },
-        {
-          name: 'Gingerbread',
-          calories: 356,
-          price: 15.35,
-          category: 'A'
-        },
-        {
-          name: 'Jelly bean',
-          calories: 375,
-          price: 12.15,
-          category: 'C'
-        },
-        {
-          name: 'Lollipop',
-          calories: 392,
-          price: 9.65,
-          category: 'D'
-        },
-        {
-          name: 'Honeycomb',
-          calories: 408,
-          price: 5.25,
-          category: 'D'
-        },
-        {
-          name: 'Donut',
-          calories: 452,
-          price: 5,
-          category: 'D'
-        },
-        {
-          name: 'KitKat',
-          calories: 518,
-          price: 5.99,
-          category: 'A'
-        },
-      ],
-    }
+    return {}
   },
-  methods: {
-    nuevo(param) {
-      this.desserts.push(param)
-    }
-  }
 };
 </script>
 

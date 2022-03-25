@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <h2>Productos</h2>
-    <v-simple-table class="mt-16">
+    <h2 class="mt-4 text-uppercase">Productos</h2>
+    <v-simple-table class="mt-8 mb-6">
       <template v-slot:default>
         <thead>
         <tr>
