@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <h2>Productos</h2>
     <v-simple-table class="mt-16">
       <template v-slot:default>
         <thead>

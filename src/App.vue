@@ -1,11 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/" @nuevo="nuevo">Home</router-link> |
+      <router-link to="/" @nuevo="nuevo">Home</router-link>
+      |
       <router-link to="/about">About</router-link>
     </div>
-    <h1> DESAFIO 4 - FORMULARIO </h1>
-<!--    <p class="text-center pa-4"> Ingrese su Postre Favorito Por Favor! </p>-->
     <router-view/>
   </div>
 </template>
@@ -14,9 +13,7 @@
 
 export default {
   name: 'App',
-  components: {
-
-  },
+  components: {},
 
   data() {
     return {

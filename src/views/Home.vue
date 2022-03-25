@@ -1,17 +1,15 @@
 <template>
   <v-app class="home">
-    <Formulario></Formulario>
+    <h1> HOMEPAGE </h1>
   </v-app>
 </template>
 
 <script>
-import Formulario from "@/components/Formulario";
-// import Tabla from "@/components/Tabla";
 
 export default {
   name: 'Home',
   components: {
-    Formulario,
+
   }
 }
 </script>

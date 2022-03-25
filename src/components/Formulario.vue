@@ -1,11 +1,13 @@
 <template>
   <v-container>
-  <form>
+    <h1> DESAFIO 4 - FORMULARIO </h1>
+    <p class="text-center pa-4"> Ingrese los datos de su producto.</p>
+    <form>
     <v-text-field
         v-model="name"
         :error-messages="nameErrors"
         :counter="10"
-        label="Name"
+        label="Nombre"
         required
         @input="$v.name.$touch()"
         @blur="$v.name.$touch()"
@@ -14,7 +16,7 @@
         type=Number
         v-model="calories"
         :error-messages="caloriesErrors"
-        label="Calories"
+        label="Calorias"
         required
         @input="$v.calories.$touch()"
         @blur="$v.calories.$touch()"
@@ -23,7 +25,7 @@
         type=Number
         v-model="price"
         :error-messages="priceErrors"
-        label="Price"
+        label="Precio"
         required
         @input="$v.price.$touch()"
         @blur="$v.price.$touch()"
@@ -32,19 +34,19 @@
         v-model="select"
         :items="items"
         :error-messages="selectErrors"
-        label="Category"
+        label="Categoria"
         required
         @change="$v.select.$touch()"
         @blur="$v.select.$touch()"
     ></v-select>
-    <v-checkbox
-        v-model="checkbox"
-        :error-messages="checkboxErrors"
-        label="Do you agree?"
-        required
-        @change="$v.checkbox.$touch()"
-        @blur="$v.checkbox.$touch()"
-    ></v-checkbox>
+<!--    <v-checkbox-->
+<!--        v-model="checkbox"-->
+<!--        :error-messages="checkboxErrors"-->
+<!--        label="Do you agree?"-->
+<!--        required-->
+<!--        @change="$v.checkbox.$touch()"-->
+<!--        @blur="$v.checkbox.$touch()"-->
+<!--    ></v-checkbox>-->
 
     <v-btn
         class="mr-4"

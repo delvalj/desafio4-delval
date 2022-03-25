@@ -1,11 +1,13 @@
 <template>
   <v-app class="about">
+    <Formulario></Formulario>
     <Tabla :arrayProductos="productos"></Tabla>
   </v-app>
 </template>
 
 <script>
 import Tabla from "@/components/Tabla";
+import Formulario from "@/components/Formulario";
 
 const axios = require('axios');
 
@@ -25,7 +27,8 @@ export default {
     })
   },
   components: {
-    Tabla
+    Tabla,
+    Formulario
   },
   methods: {}
 }
