@@ -15,21 +15,21 @@
             Price
           </th>
           <th class="text-left">
-            Category
+              Category
           </th>
         </tr>
         </thead>
 
         <tbody>
         <tr
-            v-for="postre in arrayProductos"
-            :key="postre.id"
+            v-for="producto in arrayProductos"
+            :key="producto.id"
             class="text-left"
         >
-          <td>{{ postre.name }}</td>
-          <td>{{ postre.calories }}</td>
-          <td>{{ postre.price }}</td>
-          <td>{{ postre.category }}</td>
+          <td>{{ producto.name }}</td>
+          <td>{{ producto.calories }}</td>
+          <td>{{ producto.price }}</td>
+          <td>{{ producto.category }}</td>
         </tr>
         </tbody>
 
@@ -38,14 +38,19 @@
   </v-container>
 </template>
 <script>
+
 export default {
   name: 'Tabla',
-  props: {
-    arrayProductos: {
-      type: Array,
-      default: () => []
+  // props: {
+  //   arrayProductos: {
+  //     type: Array,
+  //     default: () => []
+  //   }
+  // },
+  data() {
+    return {
+      arrayProductos: this.$store.state.productos,
     }
-
   }
 
 }
