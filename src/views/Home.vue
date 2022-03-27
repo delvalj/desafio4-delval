@@ -1,6 +1,9 @@
 <template>
-  <v-app class="home">
+  <v-app>
     <h1> HOMEPAGE </h1>
+    <div>
+      <img src="https://picsum.photos/1400/500" alt="loremPicsum">
+    </div>
   </v-app>
 </template>
 
@@ -8,8 +11,6 @@
 
 export default {
   name: 'Home',
-  components: {
-
-  }
+  components: {}
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <v-app class="about">
+  <v-app>
     <Formulario></Formulario>
     <Tabla></Tabla>
   </v-app>
