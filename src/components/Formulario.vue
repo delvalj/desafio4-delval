@@ -1,10 +1,13 @@
 <template>
-  <form>
+  <v-container>
+    <h1> DESAFIO Complementario Vue CDN a Vue CLI</h1>
+    <p class="text-center pa-4"> Ingrese los datos de su producto.</p>
+    <form>
     <v-text-field
         v-model="name"
         :error-messages="nameErrors"
-        :counter="10"
-        label="Name"
+        :counter="20"
+        label="Nombre"
         required
         @input="$v.name.$touch()"
         @blur="$v.name.$touch()"
@@ -13,7 +16,7 @@
         type=Number
         v-model="calories"
         :error-messages="caloriesErrors"
-        label="Calories"
+        label="Calorias"
         required
         @input="$v.calories.$touch()"
         @blur="$v.calories.$touch()"
@@ -22,7 +25,7 @@
         type=Number
         v-model="price"
         :error-messages="priceErrors"
-        label="Price"
+        label="Precio"
         required
         @input="$v.price.$touch()"
         @blur="$v.price.$touch()"
@@ -31,34 +34,27 @@
         v-model="select"
         :items="items"
         :error-messages="selectErrors"
-        label="Category"
+        label="Categoria"
         required
         @change="$v.select.$touch()"
         @blur="$v.select.$touch()"
     ></v-select>
-    <v-checkbox
-        v-model="checkbox"
-        :error-messages="checkboxErrors"
-        label="Do you agree?"
-        required
-        @change="$v.checkbox.$touch()"
-        @blur="$v.checkbox.$touch()"
-    ></v-checkbox>
-
     <v-btn
         class="mr-4"
-        @click="guardarDatos"
+        @click="submitDatos"
     >
       Submit
     </v-btn>
     <v-btn @click="clear">
       Clear
     </v-btn>
-  </form>
+  </form >
+  </v-container>
 </template>
 <script>
 import {validationMixin} from 'vuelidate'
 import {required, maxLength, numeric} from 'vuelidate/lib/validators'
+const axios = require('axios');
 
 // const mustBeNumber = (value) => value.type(Number)
 
@@ -67,7 +63,7 @@ export default {
 
   validations: {
 
-    name: {required, maxLength: maxLength(10)},
+    name: {required, maxLength: maxLength(20)},
     calories: {required, numeric},
     select: {required},
     price: {required, numeric},
@@ -83,29 +79,15 @@ export default {
     calories: '',
     select: null,
     items: [
-      'A',
-      'B',
-      'C',
-      'D',
+      'Entrada',
+      'Plato Principal',
+      'Bebida',
+      'Postre',
     ],
-    arrayPersona: [],
     price: '',
-    checkbox: false,
-    props: {
-      arrayProp: {
-        type: Array,
-        default: () => []
-      },
-    }
-  }),
 
+  }),
   computed: {
-    checkboxErrors() {
-      const errors = []
-      if (!this.$v.checkbox.$dirty) return errors
-      !this.$v.checkbox.checked && errors.push('You must agree to continue!')
-      return errors
-    },
     selectErrors() {
       const errors = []
       if (!this.$v.select.$dirty) return errors
@@ -115,7 +97,7 @@ export default {
     nameErrors() {
       const errors = []
       if (!this.$v.name.$dirty) return errors
-      !this.$v.name.maxLength && errors.push('Name must be at most 10 characters long')
+      !this.$v.name.maxLength && errors.push('Name must be at most 20 characters long')
       !this.$v.name.required && errors.push('Name is required.')
       return errors
     },
@@ -136,17 +118,24 @@ export default {
   },
 
   methods: {
-    guardarDatos() {
-      const nuevo = {
+      submitDatos() {
+      axios.post('https://6238c7400a54d2ceab7a0c3e.mockapi.io/desafio4productos', {
         name: this.name,
         calories: this.calories,
         price: this.price,
         category: this.select,
-      }
+      })
 
-      this.$emit("nuevo", nuevo)
-      this.clear();
-    },
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+
+        this.clear();
+
+      },
 
     clear() {
       this.$v.$reset()
