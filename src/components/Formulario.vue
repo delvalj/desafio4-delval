@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1> DESAFIO 4 - FORMULARIO </h1>
+    <h1> DESAFIO Complementario Vue CDN a Vue CLI</h1>
     <p class="text-center pa-4"> Ingrese los datos de su producto.</p>
     <form>
     <v-text-field
